@@ -32,11 +32,11 @@ switch ($action) {
         create();
         break;
     default:
-        overview();
+        overview($cards);
         break;
 }
 
-function overview()
+function overview($cards)
 {
     // Load your view
     // Tip: you can load this dynamically and based on a variable, if you want to load another view

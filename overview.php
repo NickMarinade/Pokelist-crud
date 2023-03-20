@@ -10,11 +10,15 @@
 
 <body>
 
-    <h1>Goodcard - track your collection of Pokémon cards</h1>
+    <h1>Pokémon cards collection</h1>
 
     <ul>
         <?php foreach ($cards as $card) : ?>
             <li><?= $card['name'] ?></li>
+            <li>Type:<?= $card['type'] ?></li>
+            <li>Weight:<?= $card['weight'] ?></li>
+            <li>Height:<?= $card['height'] ?></li>
+            <br>
         <?php endforeach; ?>
     </ul>
 
