@@ -22,6 +22,19 @@
         <?php endforeach; ?>
     </ul>
 
+    <h2>Add a new card</h2>
+    <form method="POST" action="action=create">
+        <label>Name:</label><br>
+        <input type="text" name="name"><br>
+        <label>Type:</label><br>
+        <input type="text" name="type"><br>
+        <label>Weight:</label><br>
+        <input type="text" name="weight"><br>
+        <label>Height:</label><br>
+        <input type="text" name="height"><br><br>
+        <input type="submit" value="Submit">
+    </form>
+
 </body>
 
 </html>
