@@ -45,13 +45,7 @@ function overview($cards)
 
 function create()
 {
-    global $cardRepository, $config;
-    
-    if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-        // Redirect back to the overview page if the form was not submitted
-        header('Location: /');
-        exit;
-    }
+    global $cardRepository;
     
     $name = $_POST['name'] ?? '';
     $type = $_POST['type'] ?? '';
@@ -62,7 +56,6 @@ function create()
     
     $cardRepository->create($name, $type, $weight, $height);
     
-    // Redirect back to the overview page after the card has been created
     header('Location: index.php');
     exit;
 }
