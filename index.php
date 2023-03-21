@@ -45,5 +45,24 @@ function overview($cards)
 
 function create()
 {
-    // TODO: provide the create logic
+    global $cardRepository, $config;
+    
+    if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+        // Redirect back to the overview page if the form was not submitted
+        header('Location: /');
+        exit;
+    }
+    
+    $name = $_POST['name'] ?? '';
+    $type = $_POST['type'] ?? '';
+    $weight = isset($_POST['weight']) ? intval($_POST['weight']) : null;
+    $height = isset($_POST['height']) ? intval($_POST['height']) : null;
+    
+    
+    
+    $cardRepository->create($name, $type, $weight, $height);
+    
+    // Redirect back to the overview page after the card has been created
+    header('Location: index.php');
+    exit;
 }

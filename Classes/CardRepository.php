@@ -13,9 +13,11 @@ class CardRepository
         $this->databaseManager = $databaseManager;
     }
 
-    // public function create(): void
-    // {
-    // }
+    public function create(string $name, string $type, int $weight, int $height): void
+    {
+        $stmt = $this->databaseManager->connection->prepare("INSERT INTO cards (name, type, weight, height) VALUES (?, ?, ?, ?)");
+        $stmt->execute([$name, $type, $weight, $height]);
+    }
 
     // // Get one
     // public function find(): array
