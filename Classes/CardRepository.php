@@ -39,7 +39,9 @@ class CardRepository
     // {
     // }
 
-    // public function delete(): void
-    // {
-    // }
+    public function delete(int $id): void
+    {
+        $stmt = $this->databaseManager->connection->prepare("DELETE FROM cards WHERE id = ?");
+        $stmt->execute([$id]);
+    }
 }

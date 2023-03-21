@@ -57,7 +57,10 @@
             <td><?= $card['weight'] ?></td>
             <td><?= $card['height'] ?></td>
             <td><a class="btn btn-warning btn-sm edit">Edit</a></td>
-            <td><a class="btn btn-danger btn-sm delete">X</a></td>
+            <td><form method="post" action="index.php?action=delete">
+                <input type="hidden" name="id" value="<?= $card['id'] ?>">
+                <button type="submit" class="btn btn-danger btn-sm">X</button>
+            </form></td>
         </tr>
         <?php endforeach; ?>
     </tbody>

@@ -31,6 +31,9 @@ switch ($action) {
     case 'create':
         create();
         break;
+    case 'delete':
+        delete();
+        break;    
     default:
         overview($cards);
         break;
@@ -56,6 +59,18 @@ function create()
     
     $cardRepository->create($name, $type, $weight, $height);
     
+    header('Location: index.php');
+    exit;
+}
+
+function delete()
+{
+    global $cardRepository;
+
+    $id = isset($_POST['id']) ? intval($_POST['id']) : null;
+
+    $cardRepository->delete($id);
+
     header('Location: index.php');
     exit;
 }
