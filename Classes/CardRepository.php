@@ -47,4 +47,7 @@ class CardRepository
         $stmt = $this->databaseManager->connection->prepare("DELETE FROM cards WHERE id = ?");
         $stmt->execute([$id]);
     }
+    
 }
+
+

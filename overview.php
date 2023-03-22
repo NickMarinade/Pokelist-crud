@@ -36,33 +36,21 @@
 
     <h1 class="display-4 text-center">Pokémon cards collection</h1>
 
-    <table class="table table-striped mt-5 table-bordered">
-        
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Type</th>
-            <th>Weight</th>
-            <th>Height</th>
-            <th></th>
-            <th></th>
-        </tr>
-    </thead>
-
-    <tbody>
+    <div class="row">
     <?php foreach ($cards as $card) : ?>
-        <tr>
-            <td><?= $card['name'] ?></td>
-            <td><?= $card['type'] ?></td>
-            <td><?= $card['weight'] ?></td>
-            <td><?= $card['height'] ?></td>
-            <td><a href="?action=update&id=<?= $card['id']?>" class="btn btn-warning btn-sm edit">Edit</a></td>
-            <td><a href="?action=delete&id=<?= $card['id']?>" class="btn btn-danger btn-sm delete">X</a></td>
-        </tr>
-        <?php endforeach; ?>
-    </tbody>
-
-    </table>
+    <div class="card" style="width: 14rem;">
+  <?= "<img src='data:image/png;base64," . base64_encode(getPokemonSprite($card['name'])) . "'>" ?>
+  <div class="card-body">
+    <h5 class="card-title"><?= $card['name'] ?></h5>
+    <h5 class="card-title">Type: <?= $card['type'] ?></h5>
+    <h5 class="card-title">Weight: <?= $card['weight'] ?></h5>
+    <h5 class="card-title">Height: <?= $card['height'] ?></h5>
+    <a href="?action=update&id=<?= $card['id']?>" class="btn btn-warning btn-sm edit">Edit</a>
+    <a href="?action=delete&id=<?= $card['id']?>" class="btn btn-danger btn-sm delete">Delete</a>
+  </div>
+</div>
+<?php endforeach; ?>
+    </div>
 
     
 </div>

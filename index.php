@@ -95,3 +95,19 @@ function update()
 
     require 'update.php';
 }
+
+  function getPokemonSprite($pokemonName) {
+    
+    $apiEndpoint = "https://pokeapi.co/api/v2/pokemon/$pokemonName";
+
+    $response = file_get_contents($apiEndpoint);
+
+    $data = json_decode($response, true);
+
+    $spriteUrl = $data['sprites']['front_default'];
+
+    $sprite = file_get_contents($spriteUrl);
+    return $sprite;
+}
+
+
