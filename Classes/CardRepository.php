@@ -24,7 +24,7 @@ class CardRepository
         $stmt = $this->databaseManager->connection->prepare("SELECT * FROM cards WHERE id = ?");
         $stmt->execute([$id]);
         $card = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $card ?: null;
+        return $card;
     }
 
     public function get(): array

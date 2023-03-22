@@ -51,14 +51,14 @@ function create()
 
     $name = $_POST['name'] ?? '';
     $type = $_POST['type'] ?? '';
-    $weight = isset($_POST['weight']) ? intval($_POST['weight']) : null;
-    $height = isset($_POST['height']) ? intval($_POST['height']) : null;
+    $weight = intval($_POST['weight']);
+    $height = intval($_POST['height']);
 
 
 
     $cardRepository->create($name, $type, $weight, $height);
 
-    header('Location: index.php');
+    header('Location: ./');
     exit;
 }
 
@@ -66,26 +66,32 @@ function delete()
 {
     global $cardRepository;
 
-    $id = isset($_POST['id']) ? intval($_POST['id']) : null;
+    $id = intval($_GET['id']);
 
     $cardRepository->delete($id);
 
-    header('Location: index.php');
+    header('Location: ./');
     exit;
 }
 
 function update()
 {
     global $cardRepository;
+    if(isset($_POST ['submit'])){
 
-    $name = $_POST['name'] ?? '';
-    $type = $_POST['type'] ?? '';
-    $weight = isset($_POST['weight']) ? intval($_POST['weight']) : null;
-    $height = isset($_POST['height']) ? intval($_POST['height']) : null;
-    $id = isset($_POST['id']) ? intval($_POST['id']) : null;
+        $name = $_POST['name'];
+        $type = $_POST['type'];
+        $weight = intval($_POST['weight']);
+        $height = intval($_POST['height']);
+        $id = intval($_GET['id']);
+    
+        $cardRepository->update($name, $type, $weight, $height, $id);   
+    
+        header('Location:./');
+        exit();
+    }
 
-    $cardRepository->update($name, $type, $weight, $height, $id);   
+    $card = $cardRepository->find(intval($_GET['id']));
 
-    header('Location: index.php');
-    exit;
+    require 'update.php';
 }

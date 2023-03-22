@@ -56,11 +56,8 @@
             <td><?= $card['type'] ?></td>
             <td><?= $card['weight'] ?></td>
             <td><?= $card['height'] ?></td>
-            <td><a href="update.php?id=<?= $card['id'] ?>" class="btn btn-warning btn-sm edit">Edit</a></td>
-            <td><form method="post" action="index.php?action=delete">
-                <input type="hidden" name="id" value="<?= $card['id'] ?>">
-                <button type="submit" class="btn btn-danger btn-sm">X</button>
-            </form></td>
+            <td><a href="?action=update&id=<?= $card['id']?>" class="btn btn-warning btn-sm edit">Edit</a></td>
+            <td><a href="?action=delete&id=<?= $card['id']?>" class="btn btn-danger btn-sm delete">X</a></td>
         </tr>
         <?php endforeach; ?>
     </tbody>

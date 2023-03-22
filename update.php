@@ -1,17 +1,3 @@
-<?php
-require_once 'config.php';
-require_once 'classes/DatabaseManager.php';
-require_once 'classes/CardRepository.php';
-
-$databaseManager = new DatabaseManager($config['host'], $config['user'], $config['password'], $config['dbname']);
-$databaseManager->connect();
-
-$cardRepository = new CardRepository($databaseManager);
-$id = isset($_GET['id']) ? intval($_GET['id']) : null;
-$card = $cardRepository->find($id);
-var_dump($card);
-?>
-
 <!doctype html>
 <html lang="en">
 
@@ -28,7 +14,7 @@ var_dump($card);
     <div class="container mt-4">
 
     <h2 class="display-4 text-center">Edit a card</h2>
-    <form method="POST" action="index.php?action=update">
+    <form method="POST" action="">
             <div class="form-group">
                 <label for="title">Name:</label>
                 <input type="text" id="name" name="name" class="form-control" value="<?= $card['name'] ?>" required>
@@ -45,11 +31,7 @@ var_dump($card);
                 <label for="height">Height:</label>
                 <input type="number" name="height" id="height" class="form-control" value="<?= $card['height'] ?>" required>
             </div>
-            <div class="form-group">
-                <label for="height">Id:</label>
-                <input type="number" name="id" id="id" class="form-control" value="<?= $card['id'] ?>" required>
-            </div>
-            <input type="submit" value="Edit Pokemon" id="editPokemon" class="btn btn-info btn-block">
+            <input type="submit" name="submit" value="Edit Pokemon" id="editPokemon" class="btn btn-info btn-block">
         </form>
     
 </div>
