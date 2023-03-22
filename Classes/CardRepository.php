@@ -19,12 +19,14 @@ class CardRepository
         $stmt->execute([$name, $type, $weight, $height]);
     }
 
-    // // Get one
-    // public function find(): array
-    // {
-    // }
+    public function find(int $id): array
+    {
+        $stmt = $this->databaseManager->connection->prepare("SELECT * FROM cards WHERE id = ?");
+        $stmt->execute([$id]);
+        $card = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $card ?: null;
+    }
 
-    // Get all
     public function get(): array
     {
 
@@ -32,12 +34,13 @@ class CardRepository
         $stmt->execute();
         $cards = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $cards;
-
     }
 
-    // public function update(): void
-    // {
-    // }
+    public function update(string $name, string $type, int $weight, int $height, int $id): void
+    {
+        $stmt = $this->databaseManager->connection->prepare("UPDATE cards SET name = ?, type = ?, weight = ?, height = ? WHERE id = ?");
+        $stmt->execute([$name, $type, $weight, $height, $id]);
+    }
 
     public function delete(int $id): void
     {
